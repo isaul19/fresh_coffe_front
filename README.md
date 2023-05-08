@@ -10,13 +10,13 @@
 Clonar repositorio
 
 ```bash
-  git clone https://github.com/isaul19/fresh_coffe_front.git
+  git clone https://github.com/isaul19/fresh_coffe_frontend.git
 ```
 
 Dirigirse al directorio
 
 ```bash
-  cd ./fresh_coffe_front
+  cd ./fresh_coffe_frontend
 ```
 
 Instalar dependencias
@@ -25,7 +25,8 @@ Instalar dependencias
   npm install
 ```
 
-Levantar servidor local
+Levantar servidor local ( fresh_coffe v2 - Para poder levantar el proyecto ahora se necesita que el
+backend esté corriendo en local)
 
 ```bash
   npm run dev

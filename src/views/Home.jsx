@@ -1,14 +1,19 @@
 import { useEffect, useState } from "react";
+import useSWR from "swr";
 import Producto from "../components/Producto";
 import { productos as productosData } from "../data/productos";
 import useQuiosco from "../hooks/useQuiosco";
+import clienteAxios from "../config/axios";
+
+const fetcher = () => clienteAxios("/api/productos").then((res) => res.data);
 
 const Home = () => {
     const { categoriaActual } = useQuiosco();
+    const { data, error, isLoading } = useSWR("/api/productos", fetcher);
 
-    const productos = productosData.filter(
-        (product) => product.categoria_id === categoriaActual.id
-    );
+    if (isLoading) return <p>Cargando...</p>;
+
+    const productos = data.data.filter((product) => product.categoria_id === categoriaActual.id);
 
     return (
         <>

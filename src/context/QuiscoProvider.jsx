@@ -1,11 +1,11 @@
-import { useState, createContext, useEffect } from "react";
+import { useState, createContext, useEffect, useCallback } from "react";
 import { toast } from "react-toastify";
-import { categorias as categoriasData } from "../data";
+import clienteAxios from "../config/axios";
 const QuioscoContext = createContext();
 
 const QuioscoProvider = ({ children }) => {
-    const [categorias, setCategorias] = useState(categoriasData);
-    const [categoriaActual, setCategoriaActual] = useState(categorias[0]);
+    const [categorias, setCategorias] = useState([]);
+    const [categoriaActual, setCategoriaActual] = useState([]);
     const [producto, setProducto] = useState([]);
     const [pedido, setPedido] = useState([]);
     const [total, setTotal] = useState(0);
@@ -46,6 +46,20 @@ const QuioscoProvider = ({ children }) => {
     const handleSetTotal = (subTotal) => {
         setTotal((prev) => prev + subTotal);
     };
+
+    const getCategorias = useCallback(async () => {
+        try {
+            const { data } = await clienteAxios.get("/api/categorias");
+            setCategorias(data.data);
+            setCategoriaActual(data.data[0]);
+        } catch (error) {
+            console.log(error);
+        }
+    }, []);
+
+    useEffect(() => {
+        getCategorias();
+    }, []);
 
     useEffect(() => {
         setTotal((prev) =>
