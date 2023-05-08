@@ -1,4 +1,4 @@
-# FRESH COFFE (FRONT)
+# FRESH COFFE (FRONTEND)
 
 ## Requerimientos
 
