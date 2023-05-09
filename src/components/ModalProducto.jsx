@@ -113,7 +113,7 @@ const ModalProducto = () => {
                         handleClickModal();
                     }}
                 >
-                    {edicion ? "Editar pedido" : "Añador al pedido"}
+                    {edicion ? "Editar pedido" : "Añadir al pedido"}
                 </button>
             </div>
         </div>

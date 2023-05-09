@@ -2,7 +2,7 @@ import { dollarFormat } from "../helpers";
 import useQuiosco from "../hooks/useQuiosco";
 
 const Producto = ({ product: producto }) => {
-    const { handleClickModal, handleSetProducto } = useQuiosco();
+    const { handleClickModal, handleSetProducto, pedido } = useQuiosco();
 
     return (
         <div className="border p-3 shadow bg-white flex flex-col justify-between">
@@ -29,7 +29,7 @@ const Producto = ({ product: producto }) => {
                 className="bg-indigo-600 hover:bg-indigo-800 text-white my-2 p-3 w-full uppercase font-bold"
                 type="button"
             >
-                Agregar
+                {pedido.some((element) => element.id === producto.id) ? "Editar" : "Agregar"}
             </button>
         </div>
     );
