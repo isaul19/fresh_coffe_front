@@ -1,7 +1,5 @@
-import { useEffect, useState } from "react";
 import useSWR from "swr";
 import Producto from "../components/Producto";
-import { productos as productosData } from "../data/productos";
 import useQuiosco from "../hooks/useQuiosco";
 import clienteAxios from "../config/axios";
 
